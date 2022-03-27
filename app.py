@@ -8,7 +8,8 @@ from io import BytesIO
 from Recognition import Recognition
 import json
 # from prepare_data import Prepare_data
-import tensorflow as tf
+# import tensorflow as tf
+# tensorflow==1.15.0
 
 
 app = Flask(__name__)
