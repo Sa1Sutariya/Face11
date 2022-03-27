@@ -1,4 +1,4 @@
-from db import db
+from db1 import db
 
 class Img1(db.Model):
     __bind_key__ = 'db2'
