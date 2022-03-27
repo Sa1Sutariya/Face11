@@ -2,7 +2,7 @@ import os
 from flask import Flask, request
 from werkzeug.utils import secure_filename
 from db1 import db_init, db
-# from model import Img, Img1
+from model import Img, Img1
 # from PIL import Image
 # from io import BytesIO
 # from Recognition import Recognition
@@ -23,36 +23,37 @@ db_init(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload1():
-    return "as.,xnvkx.sldnvsjdfkjsdnfkjsdfjkz,bkajdfnfsdjvbcx,vkjdbmx,cdjfv"
+    return "as.dbmx,cdjfv"
 
 
-# @app.route('/upload', methods=['GET', 'POST'])
-# def upload():
-#     if(request.method == 'POST'):
-#         imagefile = request.files['image']
-#         print(imagefile)
-#         if not imagefile:
-#             print('No pic uploaded!')
-#             return 'No pic uploaded!', 400
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if(request.method == 'POST'):
+        imagefile = request.files['image']
+        print(imagefile)
+        if not imagefile:
+            print('No pic uploaded!')
+            return 'No pic uploaded!', 400
 
-#         filename = secure_filename(imagefile.filename)
-#         mimetype = imagefile.mimetype
-#         if not filename or not mimetype:
-#             print('No pic uploaded!')
-#             return 'Bad upload!', 400
+        filename = secure_filename(imagefile.filename)
+        mimetype = imagefile.mimetype
+        if not filename or not mimetype:
+            print('No pic uploaded!')
+            return 'Bad upload!', 400
 
-#         img = Img(img=imagefile.read(), name=filename, mimetype=mimetype)
-#         try:
+        img = Img(img=imagefile.read(), name=filename, mimetype=mimetype)
+        try:
 
-#             db.session.add(img)
-#             db.session.commit()
-#             rows = Img.query.filter().count()
-#             print(rows)
-#             print('Img Uploaded!')
-#             return get_img(rows)
-#         except:
-#             print('Img Fail!')
-#             return 'Img Fail!'
+            db.session.add(img)
+            db.session.commit()
+            rows = Img.query.filter().count()
+            print(rows)
+            print('Img Uploaded!')
+            # return get_img(rows)
+            return 'Img upload!'
+        except:
+            print('Img Fail!')
+            return 'Img Fail!'
 
 
 # @app.route('/add', methods=['GET', 'POST'])
