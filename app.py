@@ -8,6 +8,7 @@ from io import BytesIO
 from Recognition import Recognition
 import json
 # from prepare_data import Prepare_data
+import tensorflow as tf
 
 
 app = Flask(__name__)
@@ -141,5 +142,6 @@ def get_img1():
 
 
 if __name__ == "__main__":
+    print(tf.__version__)
     app.run(debug=False)
     # app.run(debug=False, threaded=False, port=4000)
