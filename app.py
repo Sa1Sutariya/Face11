@@ -1,24 +1,24 @@
-# import os
+import os
 from flask import Flask, request
-# from werkzeug.utils import secure_filename
-# from db import db_init, db
+from werkzeug.utils import secure_filename
+from db1 import db_init, db
 # from model import Img, Img1
 # from PIL import Image
 # from io import BytesIO
 # from Recognition import Recognition
-# import json
+import json
 # from prepare_data import Prepare_data
 
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-#     os.path.join(os.getcwd(), 'img.sqlite3')
-# app.config['SQLALCHEMY_BINDS'] = {'db2': 'sqlite:///' + os.path.join(os.getcwd(), 'img1.sqlite3'),
-#                                   }
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.app_context().push()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
+    os.path.join(os.getcwd(), 'img.sqlite3')
+app.config['SQLALCHEMY_BINDS'] = {'db2': 'sqlite:///' + os.path.join(os.getcwd(), 'img1.sqlite3'),
+                                  }
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.app_context().push()
 
-# db_init(app)
+db_init(app)
 
 
 @app.route('/', methods=['GET', 'POST'])
