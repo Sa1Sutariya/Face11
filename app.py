@@ -133,11 +133,11 @@ def add():
 #     return Recognition(path)
 
 
-# @app.route('/Totalname', methods=['GET', 'POST'])
-# def get_img1():
-#     with open('sample.json', 'r') as openfile:
-#         json_object = json.load(openfile)
-#     return (json.dumps(json_object))
+@app.route('/Totalname', methods=['GET', 'POST'])
+def get_img1():
+    with open('sample.json', 'r') as openfile:
+        json_object = json.load(openfile)
+    return (json.dumps(json_object))
 
 
 if __name__ == "__main__":
