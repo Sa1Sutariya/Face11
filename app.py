@@ -56,36 +56,36 @@ def upload():
             return 'Img Fail!'
 
 
-# @app.route('/add', methods=['GET', 'POST'])
-# def add():
-#     if(request.method == 'POST'):
-#         imagefile_add1 = request.files['image']
-#         print(imagefile_add1)
-#         if not imagefile_add1:
-#             print('No pic uploaded!')
-#             return 'No pic uploaded!', 400
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+    if(request.method == 'POST'):
+        imagefile_add1 = request.files['image']
+        print(imagefile_add1)
+        if not imagefile_add1:
+            print('No pic uploaded!')
+            return 'No pic uploaded!', 400
 
-#         filename_add1 = secure_filename(imagefile_add1.filename)
-#         print(filename_add1)
-#         mimetype_add1 = imagefile_add1.mimetype
-#         if not filename_add1 or not mimetype_add1:
-#             print('No pic uploaded!')
-#             return 'Bad upload!', 400
+        filename_add1 = secure_filename(imagefile_add1.filename)
+        print(filename_add1)
+        mimetype_add1 = imagefile_add1.mimetype
+        if not filename_add1 or not mimetype_add1:
+            print('No pic uploaded!')
+            return 'Bad upload!', 400
 
-#         img_add1 = Img1(img=imagefile_add1.read(),
-#                         name=filename_add1, mimetype=mimetype_add1)
-#         path1 = os.path.join(os.getcwd(), filename_add1)
-#         print(path1)
-#         try:
-#             db.session.add(img_add1)
-#             db.session.commit()
-#             print('Img Uploaded!')
-#             get_img12(filename_add1)
-#             return 'Img Uploaded!', 200
-#         except:
-#             db.session.rollback()
-#             print('Img Fail!')
-#             return 'Img Fail!', 400
+        img_add1 = Img1(img=imagefile_add1.read(),
+                        name=filename_add1, mimetype=mimetype_add1)
+        path1 = os.path.join(os.getcwd(), filename_add1)
+        print(path1)
+        try:
+            db.session.add(img_add1)
+            db.session.commit()
+            print('Img Uploaded!')
+            # get_img12(filename_add1)
+            return 'Img Uploaded!', 200
+        except:
+            db.session.rollback()
+            print('Img Fail!')
+            return 'Img Fail!', 400
 
 
 # def get_img12(upload_id1):
