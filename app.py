@@ -4,8 +4,8 @@ from werkzeug.utils import secure_filename
 from db1 import db_init, db
 from model import Img, Img1
 # from PIL import Image
-# from io import BytesIO
-# from Recognition import Recognition
+from io import BytesIO
+from Recognition import Recognition
 import json
 # from prepare_data import Prepare_data
 
@@ -49,8 +49,8 @@ def upload():
             rows = Img.query.filter().count()
             print(rows)
             print('Img Uploaded!')
-            # return get_img(rows)
-            return 'Img upload!'
+            return get_img(rows)
+            # return 'Img upload!'
         except:
             print('Img Fail!')
             return 'Img Fail!'
@@ -123,14 +123,14 @@ def add():
 #     return Prepare_data(path12, update_name)
 
 
-# def get_img(upload_id):
-#     upload = Img.query.filter_by(id=upload_id).first()
-#     from PIL import Image
-#     vb = BytesIO(upload.img)
-#     img1 = Image.open(vb)
-#     img1.save(os.path.join(os.getcwd(), 'picture_out.jpg'))
-#     path = os.path.join(os.getcwd(), 'picture_out.jpg')
-#     return Recognition(path)
+def get_img(upload_id):
+    upload = Img.query.filter_by(id=upload_id).first()
+    from PIL import Image
+    vb = BytesIO(upload.img)
+    img1 = Image.open(vb)
+    img1.save(os.path.join(os.getcwd(), 'picture_out.jpg'))
+    path = os.path.join(os.getcwd(), 'picture_out.jpg')
+    return Recognition(path)
 
 
 @app.route('/Totalname', methods=['GET', 'POST'])
